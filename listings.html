@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Homes for Sale & Rent | Ramesh Gollu | Get Home Realty</title>
+  <meta name="description" content="Search homes for sale and rent across Toronto, Mississauga, Brampton, Oakville and Caledon with Ramesh Gollu, REALTOR® at Get Home Realty.">
+  <link rel="canonical" href="https://www.example.com/listings.html">
+  <meta name="theme-color" content="#d71920">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,800;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="nav-wrap">
+  <nav class="nav is-scrolled" aria-label="Primary">
+    <a href="index.html" class="brand" aria-label="Home">
+      <img class="brand__logo" src="assets/logo.png" alt="Get Home Realty — A Tradition of Trust, Brokerage" width="1000" height="317">
+      <span class="brand__text"><span class="brand__name" data-agent="name">Ramesh Gollu</span></span>
+    </a>
+    <ul class="nav__menu">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="listings.html" class="is-active" aria-current="page">Listings</a></li>
+      <li><a href="index.html#media">Media</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="btn btn--red btn--sm">Let’s Connect</a>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+    <div class="nav-cta-mobile"><a href="index.html#contact" class="btn btn--red">Let’s Connect</a></div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Property Search</span>
+      <h1 id="results-title">Search All <em>Properties</em></h1>
+      <p class="lead">Search every active MLS® listing for sale and rent across the GTA.</p>
+    </div>
+  </section>
+
+  <!-- ===== FULL IDX SEARCH =====
+       Set AGENT.idxSearchUrl in js/data.js (or data-idx-src below) to your IDX
+       provider's search URL. It loads only on this page — never on the homepage —
+       and homepage search filters are passed through as URL params. -->
+  <section class="section idx-section" id="idx-search" aria-label="MLS® property search">
+    <div class="container">
+      <div class="idx-shell" id="idx-embed" data-idx-src="">
+        <strong>IDX search loads here</strong>
+        Add your IDX provider's search URL to <code>AGENT.idxSearchUrl</code> in js/data.js
+        (or to <code>data-idx-src</code> on this element).
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--gray" id="featured" aria-labelledby="featured-title">
+    <div class="container">
+      <span class="eyebrow">Featured Homes</span>
+      <h2 class="title" id="featured-title">Handpicked <em>Properties</em></h2>
+      <p class="lead" id="results-summary">A curated selection of homes worth seeing.</p>
+      <div class="filters" role="group" aria-label="Filter featured listings">
+        <button class="chip" data-filter="all">All</button>
+        <button class="chip" data-filter="buy">For Sale</button>
+        <button class="chip" data-filter="rent">For Rent</button>
+        <button class="chip" data-filter="Detached">Detached</button>
+        <button class="chip" data-filter="Townhouse">Townhouse</button>
+        <button class="chip" data-filter="Luxury">Luxury</button>
+      </div>
+      <div class="listing-grid" id="results"></div>
+
+      <div id="areas" style="margin-top:70px">
+        <span class="eyebrow">Service Areas</span>
+        <h2 class="title">Communities I <em>Serve</em></h2>
+        <div class="filters" id="area-chips"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__bottom" style="border:0;padding-top:0">
+    <span>© <span data-year></span> <span data-agent="name">Ramesh Gollu</span> · REALTOR® / Sales Representative · Get Home Realty</span>
+    <span><a href="tel:+14160000000" data-agent-tel data-agent="phone">+1 (416) 000-0000</a> · <a href="mailto:agent@gethomerealty.ca" data-agent-mail data-agent="email">agent@gethomerealty.ca</a></span>
+  </div>
+</footer>
+
+<div class="mobile-bar" aria-label="Quick contact">
+  <a href="tel:+14160000000" class="call" data-agent-tel><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a href="https://wa.me/14160000000" class="wa" data-agent-wa target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>WhatsApp</a>
+</div>
+
+<script src="js/data.js" defer></script>
+<script src="js/main.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", () => {
+  const p = new URLSearchParams(location.search);
+  const q = {
+    mode: p.get("mode") || "", type: p.get("type") || "",
+    city: (p.get("city") || "").trim().toLowerCase(), price: p.get("price") || ""
+  };
+  const [min, max] = q.price ? q.price.split("-").map(v => v ? +v : null) : [null, null];
+  const grid = document.getElementById("results");
+  let chip = q.mode || q.type || "all";
+
+  function render() {
+    const list = LISTINGS.filter(l =>
+      (chip === "all" || l.mode === chip || l.type === chip) &&
+      (!q.city || l.city.toLowerCase().includes(q.city) || l.address.toLowerCase().includes(q.city)) &&
+      (min == null || l.price >= min) && (max == null || l.price <= max)
+    );
+    grid.innerHTML = list.length ? list.map(renderListing).join("")
+      : '<p class="empty">No featured homes match those filters — use the full MLS® search above.</p>';
+    grid.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
+    document.querySelectorAll(".chip[data-filter]").forEach(c => c.classList.toggle("is-active", c.dataset.filter === chip));
+    const where = q.city ? ` in ${p.get("city").trim()}` : "";
+    document.getElementById("results-summary").textContent =
+      `${list.length} featured home${list.length === 1 ? "" : "s"}${where}. Use the full MLS® search above for every active listing.`;
+  }
+  document.querySelectorAll(".chip[data-filter]").forEach(c => c.addEventListener("click", () => { chip = c.dataset.filter; render(); }));
+  render();
+
+  // Service area chips
+  const areas = ["Toronto", "Mississauga", "Brampton", "Oakville", "Caledon", "Vaughan", "Milton"];
+  document.getElementById("area-chips").innerHTML = areas.map(a =>
+    `<a class="chip" href="listings.html?city=${encodeURIComponent(a)}#idx-search">${a}</a>`).join("");
+
+  // Full IDX search — the main content of this page, so load it right away
+  const shell = document.getElementById("idx-embed");
+  const src = shell.dataset.idxSrc || (window.AGENT && AGENT.idxSearchUrl);
+  if (src) {
+    const url = new URL(src, location.href);
+    p.forEach((v, k) => v && url.searchParams.set(k, v));
+    shell.innerHTML = `<iframe src="${url}" title="MLS® property search" style="width:100%;min-height:900px;border:0;border-radius:16px"></iframe>`;
+    shell.style.padding = "0"; shell.style.border = "0";
+  }
+});
+</script>
+</body>
+</html>

@@ -71,6 +71,86 @@
     });
   }
 
+  /* ---- Testimonials: endless right-to-left scroll ---- */
+  const marquee = $(".testimonials");
+  const track = marquee && $(".testimonials__track", marquee);
+  if (track && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const originals = [...track.children];
+    const GAP = 24, SPEED = 40; // px per second
+    const clone = (el) => {
+      const c = el.cloneNode(true);
+      c.classList.remove("reveal");
+      c.setAttribute("aria-hidden", "true");
+      c.dataset.clone = "";
+      return c;
+    };
+    const build = () => {
+      $$("[data-clone]", track).forEach((n) => n.remove());
+      const setWidth = originals.reduce((w, el) => w + el.offsetWidth + GAP, 0);
+      if (!setWidth) return;
+      // Repeat the cards until one loop is wider than the visible strip…
+      const repeats = Math.max(1, Math.ceil(marquee.clientWidth / setWidth));
+      for (let r = 1; r < repeats; r++) originals.forEach((el) => track.appendChild(clone(el)));
+      // …then add a second identical loop, so moving left by one loop is seamless
+      [...track.children].forEach((el) => track.appendChild(clone(el)));
+      track.style.setProperty("--marquee-duration", `${(setWidth * repeats) / SPEED}s`);
+    };
+    build();
+    let resizeTimer;
+    addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(build, 250); });
+  }
+
+  /* ---- Contact forms (Netlify Forms): validate, send in the background, confirm inline ---- */
+  $$("form.lead-form").forEach((leadForm) => {
+    const status = $(".lead-form__status", leadForm);
+    const button = $(".lead-form__submit", leadForm);
+    const say = (text, ok) => {
+      status.textContent = text;
+      status.className = "lead-form__status " + (ok ? "is-ok" : "is-error");
+    };
+    // No-JavaScript fallback lands back here with ?sent=1
+    if (new URLSearchParams(location.search).has("sent")) say("Thanks! Your message was sent. I’ll be in touch soon.", true);
+
+    const valid = (el) => el.type === "email"
+      ? /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim())
+      : el.value.trim().length > 0;
+
+    leadForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const required = $$("[required]", leadForm);
+      required.forEach((el) => el.closest(".field").classList.toggle("is-invalid", !valid(el)));
+      const firstBad = required.find((el) => !valid(el));
+      if (firstBad) {
+        const names = required.filter((el) => !valid(el)).map((el) => leadForm.querySelector(`label[for="${el.id}"]`).textContent.replace(" *", "").toLowerCase());
+        say(`Please check: ${names.join(", ")}.`, false);
+        firstBad.focus();
+        return;
+      }
+
+      button.disabled = true;
+      const label = button.firstChild.textContent;
+      button.firstChild.textContent = "Sending… ";
+      try {
+        const res = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(new FormData(leadForm)).toString(),
+        });
+        if (!res.ok) throw new Error(res.status);
+        const first = leadForm.elements.name.value.trim().split(/\s+/)[0];
+        leadForm.reset();
+        say(`Thanks, ${first}! Your message was sent. I’ll be in touch soon.`, true);
+      } catch {
+        say(`Sorry, your message couldn’t be sent right now. Please call ${A.phone || "me"} or email ${A.email || "me"}.`, false);
+      } finally {
+        button.disabled = false;
+        button.firstChild.textContent = label;
+      }
+    });
+    $$("input, textarea", leadForm).forEach((el) =>
+      el.addEventListener("input", () => el.closest(".field")?.classList.remove("is-invalid")));
+  });
+
   /* ---- Lazy YouTube: load the iframe only on click ---- */
   $$("[data-youtube]").forEach(btn => btn.addEventListener("click", () => {
     const id = btn.dataset.youtube;

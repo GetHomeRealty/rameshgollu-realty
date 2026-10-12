@@ -96,14 +96,14 @@
         <a href="#about" class="btn btn--outline">About Me</a>
       </div>
 
-      <!-- SEARCH CARD: lightweight form → submits to listings.html where IDX loads. No IDX on homepage. -->
+      <!-- SEARCH CARD: lightweight form → submits to listings.html, which filters the listings. -->
       <div class="search" role="search">
         <div class="search__tabs" role="tablist" aria-label="Search type">
           <button type="button" class="search__tab" role="tab" aria-selected="true" data-mode="buy">Buy</button>
           <button type="button" class="search__tab" role="tab" aria-selected="false" data-mode="sell">Sell</button>
           <button type="button" class="search__tab" role="tab" aria-selected="false" data-mode="rent">Rent</button>
         </div>
-        <form class="search__form" action="listings.html#idx-search" method="get">
+        <form class="search__form" action="listings.html#featured" method="get">
           <input type="hidden" name="mode" value="buy">
           <div class="field field--select">
             <label for="s-type">Property Type</label>
@@ -185,21 +185,21 @@
   </div>
 </section>
 
-<!-- ================= FEATURED LISTINGS (3–6, lightweight — no IDX on homepage) ================= -->
+<!-- ================= FEATURED LISTINGS (3–6) ================= -->
 <section class="section section--gray" id="listings" aria-labelledby="listings-title">
   <div class="container">
     <div class="section-head reveal">
       <div>
         <span class="eyebrow">Featured Homes</span>
         <h2 class="title" id="listings-title">Handpicked <em>Properties</em></h2>
-        <p class="lead">A short list of homes worth seeing this week. Search every active MLS® listing with the full property search.</p>
+        <p class="lead">A short list of homes worth seeing this week. See every home I have for sale and rent on the listings page.</p>
       </div>
-      <a href="listings.html#idx-search" class="btn btn--red">Search All Properties
+      <a href="listings.html" class="btn btn--red">Search All Properties
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="listing-grid" id="featured-grid"><!-- rendered from js/data.js --></div>
     <div class="listing-more">
-      <a href="listings.html#idx-search" class="btn btn--red">Search All Properties
+      <a href="listings.html" class="btn btn--red">Search All Properties
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>

@@ -1,7 +1,7 @@
 /* =========================================================
    Site config + featured listings.
    Edit AGENT details here — they populate every page.
-   Replace LISTINGS with your IDX feed / featured picks.
+   Replace LISTINGS with your featured picks.
    ========================================================= */
 window.AGENT = {
   name: "Ramesh Gollu",
@@ -11,9 +11,6 @@ window.AGENT = {
   phoneRaw: "+14162685477",
   whatsapp: "14162685477",
   email: "ramesh@gethomerealty.ca",
-  // Full IDX search URL from your IDX provider. It loads only on listings.html,
-  // never on the homepage. Homepage search filters are appended as URL params.
-  idxSearchUrl: "",
   // How many featured listings to show on the homepage (3–6).
   featuredCount: 6
 };

@@ -274,7 +274,6 @@ h2.title em, h1 em { font-style: normal; color: var(--red); }
 .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
 .section-head .lead { margin: 0; }
 .listing-more { display: flex; justify-content: center; margin-top: 28px; }
-.idx-section { padding-top: 28px; }
 .listing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .listing { position: relative; }
 .listing__tag {
@@ -416,11 +415,6 @@ h2.title em, h1 em { font-style: normal; color: var(--red); }
 .chip { padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--line); font-weight: 700; font-size: 14px; background: #fff; transition: all .25s; }
 .chip:hover { border-color: var(--ink); }
 .chip.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
-.idx-shell {
-  border: 2px dashed #d9d5cf; border-radius: var(--radius); padding: 40px; text-align: center; background: #fff;
-  color: var(--muted); margin-bottom: 50px;
-}
-.idx-shell strong { color: var(--ink); display: block; font-size: 18px; margin-bottom: 6px; }
 .empty { text-align: center; color: var(--muted); padding: 40px 0; grid-column: 1 / -1; }
 
 .detail { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: start; }
@@ -589,5 +583,4 @@ a.contact-card:hover { border-color: var(--red); transform: translateY(-3px); }
   .nav .brand__logo { height: 34px; }
   .nav .brand__name { font-size: 16px; }
   .footer__top { flex-direction: column; align-items: flex-start; }
-  .idx-shell { padding: 26px 18px; }
 }

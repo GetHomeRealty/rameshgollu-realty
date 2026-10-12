@@ -39,21 +39,7 @@
     <div class="container">
       <span class="eyebrow">Property Search</span>
       <h1 id="results-title">Search All <em>Properties</em></h1>
-      <p class="lead">Search every active MLS® listing for sale and rent across the GTA.</p>
-    </div>
-  </section>
-
-  <!-- ===== FULL IDX SEARCH =====
-       Set AGENT.idxSearchUrl in js/data.js (or data-idx-src below) to your IDX
-       provider's search URL. It loads only on this page — never on the homepage —
-       and homepage search filters are passed through as URL params. -->
-  <section class="section idx-section" id="idx-search" aria-label="MLS® property search">
-    <div class="container">
-      <div class="idx-shell" id="idx-embed" data-idx-src="">
-        <strong>IDX search loads here</strong>
-        Add your IDX provider's search URL to <code>AGENT.idxSearchUrl</code> in js/data.js
-        (or to <code>data-idx-src</code> on this element).
-      </div>
+      <p class="lead">Browse homes for sale and rent across the GTA. Don’t see the right one? Tell me what you’re looking for and I’ll search the market for you.</p>
     </div>
   </section>
 
@@ -113,12 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
       (min == null || l.price >= min) && (max == null || l.price <= max)
     );
     grid.innerHTML = list.length ? list.map(renderListing).join("")
-      : '<p class="empty">No featured homes match those filters — use the full MLS® search above.</p>';
+      : '<p class="empty">No homes match those filters right now. <a href="contact.html">Tell me what you’re looking for</a> and I’ll search the market for you.</p>';
     grid.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
     document.querySelectorAll(".chip[data-filter]").forEach(c => c.classList.toggle("is-active", c.dataset.filter === chip));
     const where = q.city ? ` in ${p.get("city").trim()}` : "";
     document.getElementById("results-summary").textContent =
-      `${list.length} featured home${list.length === 1 ? "" : "s"}${where}. Use the full MLS® search above for every active listing.`;
+      `${list.length} home${list.length === 1 ? "" : "s"}${where}.`;
   }
   document.querySelectorAll(".chip[data-filter]").forEach(c => c.addEventListener("click", () => { chip = c.dataset.filter; render(); }));
   render();
@@ -126,17 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Service area chips
   const areas = ["Toronto", "Mississauga", "Brampton", "Oakville", "Caledon", "Vaughan", "Milton"];
   document.getElementById("area-chips").innerHTML = areas.map(a =>
-    `<a class="chip" href="listings.html?city=${encodeURIComponent(a)}#idx-search">${a}</a>`).join("");
-
-  // Full IDX search — the main content of this page, so load it right away
-  const shell = document.getElementById("idx-embed");
-  const src = shell.dataset.idxSrc || (window.AGENT && AGENT.idxSearchUrl);
-  if (src) {
-    const url = new URL(src, location.href);
-    p.forEach((v, k) => v && url.searchParams.set(k, v));
-    shell.innerHTML = `<iframe src="${url}" title="MLS® property search" style="width:100%;min-height:900px;border:0;border-radius:16px"></iframe>`;
-    shell.style.padding = "0"; shell.style.border = "0";
-  }
+    `<a class="chip" href="listings.html?city=${encodeURIComponent(a)}#featured">${a}</a>`).join("");
 });
 </script>
 </body>

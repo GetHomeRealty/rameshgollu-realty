@@ -59,7 +59,7 @@
     tabs.forEach(tab => tab.addEventListener("click", () => {
       tabs.forEach(t => t.setAttribute("aria-selected", t === tab));
       modeInput.value = tab.dataset.mode;
-      // "Sell" routes to a home-valuation conversation instead of IDX
+      // "Sell" routes to a home-valuation conversation instead of a search
       submit.textContent = tab.dataset.mode === "sell" ? "Get Home Value" : "Search Homes";
     }));
     $("form", search).addEventListener("submit", e => {
@@ -67,7 +67,7 @@
         e.preventDefault();
         location.href = "#contact";
       }
-      // Otherwise submits via GET to listings.html — no IDX loaded on the homepage.
+      // Otherwise submits via GET to listings.html, which filters the listings.
     });
   }
 
